@@ -14,11 +14,9 @@ public class Program {
      * @param args the command line arguments
      */
     static String[] pakli = new String[22];
-    static String[] szinek = {"P", "T", "Z", "M"};
-    static String[] ertekek = {"Ász", "Kir", "Fel", "X", "IX", "VIII"};
     
     public static void main(String[] args) {
-        
+        pakliFeltolt();
         for (int i = 0; i < 3; i++) {
             kirak();
             melyik();
@@ -28,7 +26,9 @@ public class Program {
     }
     
     public static void kirak(){
-        
+        for (int i = 0; i < pakli.length; i++) {
+            System.out.println(pakli[i]);
+        }
     }
     
     public static void melyik(){
@@ -43,4 +43,17 @@ public class Program {
         
     }
     
+    public static String[] pakliFeltolt(){
+        String[] szinek = {"P", "T", "Z", "M"};
+        String[] ertekek = {"Ász", "Kir", "Fel", "X", "IX", "VIII"};
+        int db = 0;
+        for (String szin : szinek) {
+            for (String ertek : ertekek) {
+                if (db < 21) {
+                   pakli[++db]=szin + " "  + ertek; 
+                }
+            }
+        }
+        return pakli;
+    }
 }
