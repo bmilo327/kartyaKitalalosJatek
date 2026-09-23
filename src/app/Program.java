@@ -17,16 +17,11 @@ public class Program {
      */
     static String[] pakli = new String[22];
     static Scanner scr = new Scanner(System.in);
-    static String[] a = new String[22];
     
     public static void main(String[] args) {
         pakliFeltolt();
         for (int i = 0; i < 3; i++) {
-            if(i == 0){
-                kirak(pakli);
-            } else {
-                kirak(a);
-            }
+            kirak(pakli);
             int tipp = melyik();
             kever(tipp);
         }
@@ -54,33 +49,35 @@ public class Program {
         return tipp;
     }
     
-    public static String[] kever(int tipp){
+    public static void kever(int tipp){
+        String[] ujPakli = new String[22];
+        
         switch (tipp) {
             case 1:
-                for (int i = 1; i < 7; i++) {
-                   a[i]= pakli[20-((i-1)*3)];
-                   a[i]= pakli[19-((i-1)*3)];
-                   a[i]= pakli[21-((i-1)*3)];
+                for (int i = 1; i <= 7; i++) {
+                   ujPakli[i]= pakli[20-((i-1)*3)];
+                   ujPakli[i+7]= pakli[19-((i-1)*3)];
+                   ujPakli[i+14]= pakli[21-((i-1)*3)];
                 }
                 break;
             case 2: 
-                for (int i = 1; i < 7; i++) {
-                   a[i]= pakli[19-((i-1)*3)];
-                   a[i]= pakli[20-((i-1)*3)];
-                   a[i]= pakli[21-((i-1)*3)]; 
+                for (int i = 1; i <= 7; i++) {
+                   ujPakli[i]= pakli[19-((i-1)*3)];
+                   ujPakli[i+7]= pakli[20-((i-1)*3)];
+                   ujPakli[i+14]= pakli[21-((i-1)*3)]; 
                 }
                 break;
             case 3: 
-                for (int i = 1; i < 7; i++) {
-                   a[i]= pakli[19-((i-1)*3)];
-                   a[i]= pakli[21-((i-1)*3)];
-                   a[i]= pakli[20-((i-1)*3)];
+                for (int i = 1; i <= 7; i++) {
+                   ujPakli[i]= pakli[20-((i-1)*3)];
+                   ujPakli[i+7]= pakli[21-((i-1)*3)];
+                   ujPakli[i+14]= pakli[19-((i-1)*3)];
                 }
                 break;
             default:
                 throw new AssertionError();
         }
-        return a;       
+        pakli = ujPakli;       
     }
     
     public static void ezVolt(){
